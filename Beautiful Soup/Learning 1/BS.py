@@ -1,7 +1,27 @@
 import requests as r
 from bs4 import BeautifulSoup
+from dataclasses import dataclass
 
-# https://www.google.com/finance/quote/GOOGL:NASDAQ
+@dataclass
+class Stock:
+    ticker: str
+    exchange: str
+    price: float = 0
+    currency: str = "USD"
+    usd_price: float = 0
+
+    def __post_init__(self):
+        price_info = get_price_information(self.ticket, self.exchange)
+
+        self.price = price_info["price"]
+        self.currency = price_info["currency"]
+        self.usd_price = price_info["usd_price"]
+
+
+
+
+
+
 
 def get_fx_to_usd(currency):
     fx_url = f"https://www.google.com/finance/quote/{currency}-USD"
@@ -35,7 +55,16 @@ def get_price_information(ticker, exchange):
         "usd_price": usd_price
     }
 
+#Stock --> Position -> Portfolio ; as we know already.....
+
+
 if __name__ == "__main__":
     # print(get_price_information("AMZN", "NASDAQ"))
-    # print(get_price_information("SHOP", "TSE"))
+    print(get_price_information("SHOP", "TSE"))
     print(get_fx_to_usd("CAD"))
+
+
+
+
+
+
