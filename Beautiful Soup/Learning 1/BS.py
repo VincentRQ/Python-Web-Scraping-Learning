@@ -11,11 +11,29 @@ class Stock:
     usd_price: float = 0
 
     def __post_init__(self):
-        price_info = get_price_information(self.ticket, self.exchange)
+        price_info = get_price_information(self.ticker, self.exchange)
 
         self.price = price_info["price"]
         self.currency = price_info["currency"]
         self.usd_price = price_info["usd_price"]
+
+
+
+@dataclass
+class Position:
+    stock: Stock
+    quantity:int()
+
+@dataclass
+class Portfolio:
+    positions: list[Position]
+
+    def get_total_Value(self):
+        total_value = 0
+        for position in self.positions:
+            total_value += position.quantity * position.stock.usd_price
+
+        return total_value
 
 
 
@@ -60,11 +78,14 @@ def get_price_information(ticker, exchange):
 
 if __name__ == "__main__":
     # print(get_price_information("AMZN", "NASDAQ"))
-    print(get_price_information("SHOP", "TSE"))
-    print(get_fx_to_usd("CAD"))
+    shop = Stock("SHOP", "TSE")
+    msft = Stock("MSFT", "NASDAQ")
+    googl = Stock("GOOGL", "NASDAQ")
+    # print(get_fx_to_usd("CAD"))
 
+    portfolio = Portfolio([Position(shop, 10), Position(msft, 2), Position(googl, 30)])
 
+    print(portfolio.get_total_Value())
 
-
-
+    # Stock --? Position --> Portfolio
 
