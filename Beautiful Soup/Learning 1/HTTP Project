@@ -30,4 +30,4 @@ def get_jobs_for(lat=None, lng=None, results=20):
     return response.json()
 
 
-print(get_jobs_for(42.6532, -79.3832, 1))
+print(get_jobs_for(42.6532, -79.3832, 20))
