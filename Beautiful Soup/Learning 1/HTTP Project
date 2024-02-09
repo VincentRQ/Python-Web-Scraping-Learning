@@ -40,5 +40,3 @@ df = pd.DataFrame(
 )
 
 df.to_csv("open_positions.csv", index=False)
-
-df
