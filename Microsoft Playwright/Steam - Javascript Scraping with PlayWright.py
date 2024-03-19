@@ -39,9 +39,21 @@ if __name__ == "__main__":
                 print("Title not found")
             # thumbnail = d.css_first('img[class*="CapsuleImage"]').attributes.get("src")
             tags = [a.text() for a in d.css("div[class*='_3OSJsO_BdhSFujrHvCGLqV'] > a")[:5]]
+            release_date = d.css_first('div[class*="WidgetReleaseDateAndPlatformCtn"] > div[class*="StoreSaleWidgetRelease"]').text()
+            reviewed_score = d.css_first('div[class*="ReviewScoreValue"] > div').text()
+            reviewed_by = d.css_first('div[class*="ReviewScoreCount"]').text()
+
+            sale_price = d.css_first('div[class*="StoreSalePriceBox"]').text()
+            original_price = d.css_first('div[class*="StoreOriginalPrice"]').text()
+
 
             attrs = {
                 "title": title,
+                "sale_price": sale_price,
+                "original_price": original_price,
+                "reviewed_score": reviewed_score,
+                "reviewed_by": reviewed_by,
+                "release_date": release_date,
                 "tags": tags,
                 # "thumbnail": thumbnail
             }

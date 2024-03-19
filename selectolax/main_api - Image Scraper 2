@@ -60,6 +60,7 @@ def scrape(keyword, num_of_results):
 
 
 
+
 if __name__ == '__main__':
     # download x imgs under this term
 
