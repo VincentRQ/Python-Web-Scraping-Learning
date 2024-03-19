@@ -16,11 +16,64 @@ _config = {
             "selector": 'div[class*="StoreSaleWidgetTitle"]',
             "match": "first",
             "type": "text"
-        }
-    ]
+        }, {
+            "name": "thumnail",
+            "selector": 'div[class*="CapsuleImage"]',
+            "match": "first",
+            "type": "node"}
+        ,
+        {
+            "name": "tags",
+            "selector": 'div[class*="StoreSaleWidgetTags"] > a',
+            "match": "all",
+            "type": "text"}
+        ,
+        {
+            "name": "release_date",
+            "selector": 'div[class*="WidgetReleaseDateAndPlatformCtn"] > div[class*="StoreSaleWidgetRelease"]',
+            "match": "first",
+            "type": "text"}
+        ,
+        {
+            "name": "review_score",
+            "selector": 'div[class*="ReviewScoreValue"] > div',
+            "match": "first",
+            "type": "text"}
+        ,
+        {
+            "name": "price_currency",
+            "selector": 'div[class*="StoreSalePriceBox"]',
+            "match": "first",
+            "type": "text"}
+        ,
+        {
+            "name": "sale_price",
+            "selector": 'div[class*="StoreSalePriceBox"]',
+            "match": "first",
+            "type": "text"}
+        ,
+        {
+            "name": "reviewed_by",
+            "selector": 'div[class*="ReviewScoreCount"]',
+            "match": "first",
+            "type": "text"}
+        ,
+        {
+            "name": "original_price",
+            "selector": 'div[class*="StoreOriginalPrice"]',
+            "match": "first",
+            "type": "text"}
+
+        ]
 }
 
 
+
+
+
+
+
+# OTHER: .attributes.get("src")
 def get_config(load_from_file=False):
     if load_from_file:
         with open("config.json", "r") as f:
