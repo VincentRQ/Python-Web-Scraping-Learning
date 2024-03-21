@@ -28,14 +28,14 @@ class GdpSpider(scrapy.Spider):
             yield item.load_item()
 
 
-        # for country in response.xpath("//table[contains(@class,'wikitable sortable')]//tbody//tr"):
-        #     yield {
-        #         "country_name": country.xpath(".//td[1]//a/text()").get(),
-        #         "region": country.xpath(".//td[2]//a/text()").get(),
-        #         "gdp": country.xpath(".//td[3]/text()").get(),
-        #         "year": country.xpath(".//td[4]/text()").get(),
-        #
-        #     }
+        for country in response.xpath("//table[contains(@class,'wikitable sortable')]//tbody//tr"):
+            yield {
+                "country_name": country.xpath(".//td[1]//a/text()").get(),
+                "region": country.xpath(".//td[2]//a/text()").get(),
+                "gdp": country.xpath(".//td[3]/text()").get(),
+                "year": country.xpath(".//td[4]/text()").get(),
+
+            }
             #using xpath
             # /html/body/table[3]/tbody/tr/td[2]
             # //table[3]//td[2]
