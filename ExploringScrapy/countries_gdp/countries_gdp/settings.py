@@ -65,6 +65,7 @@ ROBOTSTXT_OBEY = True
 ITEM_PIPELINES = {
    "countries_gdp.pipelines.CountriesGdpPipeline": 100,
    "countries_gdp.pipelines.SaveToDatabasePipeline": 200,
+   "countries_gdp.pipelines.NoDuplicateCountryPipeline": 1,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
